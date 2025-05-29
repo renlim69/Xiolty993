@@ -10,35 +10,35 @@
   <style>
 
 
-body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  overflow-x: hidden;
-  font-family: "Rubik Glitch", system-ui;
-  background-image: url('photo_2025-05-13_11-37-47.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  color: #fff;
-  filter: contrast(130%) brightness(110%);
-  animation: hueRotate 20s infinite linear;
-  position: relative;
-  z-index: 0;
-  color: #ffffff;
-}
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow-x: hidden;
+      font-family: "Rubik Glitch", system-ui;
+      background-image: url('photo_2025-05-13_11-37-47.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      color: #fff;
+      filter: contrast(130%) brightness(110%);
+      animation: hueRotate 20s infinite linear;
+      position: relative;
+      z-index: 0;
+      color: #ffffff;
+    }
 
-.background-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: linear-gradient(135deg, rgba(255,0,255,0.3), rgba(0,255,255,0.3), rgba(255,255,0,0.3));
-  mix-blend-mode: screen;
-  pointer-events: none;
-  z-index: -1;
-}
+    .background-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: linear-gradient(135deg, rgba(255,0,255,0.3), rgba(0,255,255,0.3), rgba(255,255,0,0.3));
+      mix-blend-mode: screen;
+      pointer-events: none;
+      z-index: -1;
+    }
 
 /*
 @keyframes glitch {
@@ -190,9 +190,6 @@ header {
   pointer-events: none;
 }
 
-
-
-
 .track-button {
   background: linear-gradient(135deg, rgba(255,0,255,0.6), rgba(0,255,255,0.6));
   padding: 15px 20px;
@@ -253,17 +250,17 @@ header {
 }
 
 .slider {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
 
 }
 
 .slider img {
-    width: 150px;
-    height: auto;
-    scroll-snap-align: center;
-    border-radius: 10px;
+  width: 150px;
+  height: auto;
+  scroll-snap-align: center;
+  border-radius: 10px;
 
 }
 
@@ -284,7 +281,7 @@ header {
 
   .art-image,
   .art-image-wrapper,
-  .art-item-blur .art-image-wrapper {
+  .art-item-blur  {
     width: 90%;
     max-width: 300px;
     margin: 0 auto 15px;
@@ -292,7 +289,13 @@ header {
     overflow: hidden;
     position: relative;
   }
-
+.art-wrapper {
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+  padding: 10px;
+  scroll-snap-type: x mandatory;
+}
   .art-image,
   .art-item-blur .art-image {
     width: 100%;
@@ -338,38 +341,39 @@ header {
     padding: 10px;
     margin-bottom: 8px;
   }
+
+  .main-columns {
+    flex-direction: column;
+    gap: 0;
+    padding: 10px;
+  }
 }
 
+</style>
 
+<script>
+  function toggleAudio(id) {
+    const allAudio = document.querySelectorAll("audio");
+    const currentAudio = document.getElementById(id);
 
-
-
-
-  </style>
-
-  <script>
-    function toggleAudio(id) {
-      const allAudio = document.querySelectorAll("audio");
-      const currentAudio = document.getElementById(id);
-
-      allAudio.forEach(audio => {
-        if (audio !== currentAudio) {
-          audio.pause();
-          audio.currentTime = 0;
-        }
-      });
-
-      if (currentAudio.paused) {
-        currentAudio.play();
-      } else {
-        currentAudio.pause();
-        currentAudio.currentTime = 0;
+    allAudio.forEach(audio => {
+      if (audio !== currentAudio) {
+        audio.pause();
+        audio.currentTime = 0;
       }
-    }
-  </script>
+    });
 
-  <script>
-  
+    if (currentAudio.paused) {
+      currentAudio.play();
+    } else {
+      currentAudio.pause();
+      currentAudio.currentTime = 0;
+    }
+  }
+</script>
+
+<script>
+
   // Для блюра
   function setupBlurToggle(imageId, overlayId, timeout = 300000) {
     const image = document.getElementById(imageId);
@@ -568,6 +572,33 @@ header {
           <div class="track-button">
             <div class="trek-art" onclick="toggleAudio('audio12')">Dj trippie flameboy - B0lit :(</div>
             <audio id="audio12" src="dj-tr3pp32-fl1m2b46-b0l3t.mp3"></audio>
+         </div>
+        </div>
+      </div>
+
+      <div class="art-item">
+        <div class="art-image-container">
+          <img src="photo_2025-05-29_15-28-01.jpg" alt="Арт" class="art-image">
+        </div>
+        <div class="art-meta">
+          <div class="time-art time-art-box">Time: ?:??</div>
+          <div class="track-button">
+            <div class="trek-art" onclick="toggleAudio('audio13')">BOOKER - GDE PAPA?</div>
+            <audio id="audio13" src="BOOKER - GDE PAPA_.mp3"></audio>
+          </div>
+        </div>
+      </div>
+
+      <div class="art-item">
+        <div class="art-image-container">
+          <img src="photo_2025-05-29_18-52-27.jpg" alt="Арт" class="art-image">
+        </div>
+        <div class="art-meta">
+          <div class="time-art time-art-box">Time: ?:??</div>
+          <div class="track-button">
+            <div class="trek-art" onclick="toggleAudio('audio14')">VanBog - Пятка</div>
+            <audio id="audio14" src="VanBog - Пятка.mp3"></audio>
+          </div>
         </div>
       </div>
     </section>  
@@ -636,78 +667,75 @@ header {
       <div class="meme-item">
         <img src="photo_9_2025-05-19_11-46-13.jpg" alt="Мем" class="meme-image">
       </div>
-
-
-
     </section>
-  </div>
+        
 
-  <section id="gallery">
-    <h2>Мемы</h2>
-    <div class="slider">
-      
-      <div class="meme-item">
-        <img src="photo_10_2025-05-19_11-46-13.jpg" alt="Мем" class="meme-image">
+    <section id="gallery">
+      <div class="section-title">Мемы</div>
+      <div class="slider">
+
+        <div class="meme-item">
+          <img src="photo_10_2025-05-19_11-46-13.jpg" alt="Мем" class="meme-image">
+        </div>
+
+        <div class="meme-item">
+          <img src="photo_11_2025-05-19_11-46-13.jpg" alt="Мем" class="meme-image">
+        </div>
+
+
+        <div class="meme-item">
+          <img src="photo_12_2025-05-19_11-46-13.jpg" alt="Мем" class="meme-image">
+        </div>
+
+        <div class="meme-item">
+          <img src="photo_13_2025-05-19_11-46-13.jpg" alt="Мем" class="meme-image">
+        </div>
+
+        <div class="meme-item">
+          <img src="photo_14_2025-05-19_11-46-13.jpg" alt="Мем" class="meme-image">
+        </div>
+
+        <div class="meme-item">
+          <img src="photo_15_2025-05-19_11-46-13.jpg" alt="Мем" class="meme-image">
+        </div>
+
+        <div class="meme-item">
+          <img src="photo_1_2025-05-19_11-46-13.jpg" alt="Мем" class="meme-image">
+        </div>
+
+        <div class="meme-item">
+          <img src="photo_2_2025-05-19_11-46-13.jpg" alt="Мем" class="meme-image">
+        </div>
+
+        <div class="meme-item">
+          <img src="photo_3_2025-05-19_11-46-13.jpg" alt="Мем" class="meme-image">
+        </div>
+
+        <div class="meme-item">
+          <img src="photo_4_2025-05-19_11-46-13.jpg" alt="Мем" class="meme-image">
+        </div>
+
+        <div class="meme-item">
+          <img src="photo_5_2025-05-19_11-46-13.jpg" alt="Мем" class="meme-image">
+        </div>
+
+        <div class="meme-item">
+          <img src="photo_6_2025-05-19_11-46-13.jpg" alt="Мем" class="meme-image">
+        </div>
+
+        <div class="meme-item">
+          <img src="photo_7_2025-05-19_11-46-13.jpg" alt="Мем" class="meme-image">
+        </div>
+
+        <div class="meme-item">
+          <img src="photo_8_2025-05-19_11-46-13.jpg" alt="Мем" class="meme-image">
+        </div>
+
+        <div class="meme-item">
+          <img src="photo_9_2025-05-19_11-46-13.jpg" alt="Мем" class="meme-image">
+        </div>
+
       </div>
-
-      <div class="meme-item">
-        <img src="photo_11_2025-05-19_11-46-13.jpg" alt="Мем" class="meme-image">
-      </div>
-
-
-      <div class="meme-item">
-        <img src="photo_12_2025-05-19_11-46-13.jpg" alt="Мем" class="meme-image">
-      </div>
-
-      <div class="meme-item">
-        <img src="photo_13_2025-05-19_11-46-13.jpg" alt="Мем" class="meme-image">
-      </div>
-
-      <div class="meme-item">
-        <img src="photo_14_2025-05-19_11-46-13.jpg" alt="Мем" class="meme-image">
-      </div>
-
-      <div class="meme-item">
-        <img src="photo_15_2025-05-19_11-46-13.jpg" alt="Мем" class="meme-image">
-      </div>
-
-      <div class="meme-item">
-        <img src="photo_1_2025-05-19_11-46-13.jpg" alt="Мем" class="meme-image">
-      </div>
-
-      <div class="meme-item">
-        <img src="photo_2_2025-05-19_11-46-13.jpg" alt="Мем" class="meme-image">
-      </div>
-
-      <div class="meme-item">
-        <img src="photo_3_2025-05-19_11-46-13.jpg" alt="Мем" class="meme-image">
-      </div>
-
-      <div class="meme-item">
-        <img src="photo_4_2025-05-19_11-46-13.jpg" alt="Мем" class="meme-image">
-      </div>
-
-      <div class="meme-item">
-        <img src="photo_5_2025-05-19_11-46-13.jpg" alt="Мем" class="meme-image">
-      </div>
-
-      <div class="meme-item">
-        <img src="photo_6_2025-05-19_11-46-13.jpg" alt="Мем" class="meme-image">
-      </div>
-
-      <div class="meme-item">
-        <img src="photo_7_2025-05-19_11-46-13.jpg" alt="Мем" class="meme-image">
-      </div>
-
-      <div class="meme-item">
-        <img src="photo_8_2025-05-19_11-46-13.jpg" alt="Мем" class="meme-image">
-      </div>
-
-      <div class="meme-item">
-        <img src="photo_9_2025-05-19_11-46-13.jpg" alt="Мем" class="meme-image">
-      </div>
-
-    </div>
   </section>
 </body>
 </html>
