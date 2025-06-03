@@ -10,184 +10,139 @@
   <style>
 
 
-    body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      overflow-x: hidden;
-      font-family: "Rubik Glitch", system-ui;
-      background-image: url('photo_2025-05-13_11-37-47.jpg');
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      color: #fff;
-      filter: contrast(130%) brightness(110%);
-      animation: hueRotate 20s infinite linear;
-      position: relative;
-      z-index: 0;
-      color: #ffffff;
-    }
-
-    .background-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: linear-gradient(135deg, rgba(255,0,255,0.3), rgba(0,255,255,0.3), rgba(255,255,0,0.3));
-      mix-blend-mode: screen;
-      pointer-events: none;
-      z-index: -1;
-    }
-
-/*
-@keyframes glitch {
-  0% { text-shadow: 2px 0 #ff00ff, -2px 0 #00ffff; }
-  20% { text-shadow: -2px 0 #ffff00, 2px 0 #ff0090; }
-  40% { text-shadow: 2px 2px #00ffff, -2px -2px #ff00ff; }
-  60% { text-shadow: -2px -2px #ff0090, 2px 2px #00ff00; }
-  80% { text-shadow: 2px -2px #ff0000, -2px 2px #00ffff; }
-  100% { text-shadow: 0 0 #ff00ff, 0 0 #00ffff; }
-} 
-
-* {
-  animation: glitch 1.5s infinite alternate;
-}
-*/
-.art-item {
-  display: flex;
-  margin-bottom: 150px;
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-x: hidden;
+  font-family: "Rubik Glitch", system-ui;
+  background-image: url('photo_2025-05-13_11-37-47.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: #fff;
+  filter: contrast(130%) brightness(110%);
 }
 
 header {
   width: 100%;
-  padding: 20px;
-  background-color: rgba(0, 0, 0, 0.6);
+  box-sizing: border-box;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  
+  background-color: rgba(0, 0, 0, 0.6);
   border-bottom: 2px dashed #ff00ff;
-  position: relative;
-  z-index: 1;
 }
 
 .title {
-  font-size: 36px;
-  font-weight: bold;
-  text-shadow: 2px 2px 4px #ff00ff;
   padding-left: 20px;
+  font-size: clamp(1.5rem, 2rem, 2.5rem);
+  color: #fff;
+  text-shadow: 2px 2px 4px #ff00ff;
 }
 
-.section {
-  padding: 20px;
-  margin: 20px;
-  position: relative;
-  z-index: 1;
+.tgk {
+  padding-right: 20px;
+}
+
+.main-columns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 2vw;
+  gap: 2vw;
 }
 
 .section-title {
-  font-size: 28px;
-  margin-bottom: 15px;
-  text-shadow: 1px 1px 4px #000;
-  border-bottom: 2px dotted #ff00ff;
+  font-size: 1.75rem; 
+  margin-bottom: 1rem;
+  text-align: center;
+  text-shadow: 0.063em 0.063em 0.25em #000; 
+  border-bottom: 0.125rem dotted #ff00ff;
+}
+
+#arts{
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 2vh 2vw;
+  flex: 1 1 100%;
+}
+
+#memes .memes-carousel {
+  margin-top: 5rem
+}
+@media (min-width: 769px) {
+  #arts {
+    flex: 3;
+  }
+
+  #memes {
+    flex: 1;
+  }
+}
+@media (max-width: 768px) {
+  .main-columns {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.art-card {
+  background-color: #ffe4e1;
+  border-radius: 8px;
+  padding: 1em;
+  margin-bottom: 1.5em;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .art-image {
-  width: 400px;
+  border-radius: 8px;
+  margin-top: 1em;
+  width: 100%;
+  max-width: 450px;
   height: auto;
-  border-radius: 10px;
-  margin-right: 20px;
-  position: relative;
-  z-index: 2;
-}
-
-.art-meta {
-  font-size: 22px;
-  color: #0088ff;
-  text-shadow: 0 0 3px #000;
-  z-index: 2;
-}
-
-.trek-art {
-  cursor: pointer;
-  display: inline-block;
-  transition: transform 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
-}
-
-.trek-art:hover {
-  color: #ff00ff;
-  text-shadow: 0 0 10px #00ffff, 0 0 20px #ff00ff;
-  transform: scale(1.05) rotate(-1deg);
-}
-
-.trek-art:active {
-  transform: scale(0.95) rotate(1deg);
-  color: #ffff00;
-}
-
-.meme-item {
-  display: flex;
-  align-items: center;
-  margin-bottom: 25px;
-  padding-left: 50px;
-}
-
-.meme-image {
-  width: 220px;
-  border-radius: 10px;
-  box-shadow: 0 0 20px #ff00ff;
-}
-
-.time-art {
-  margin-bottom: 20px;
-}
-
-
-/* Общие стили для всех артов */
-.art-item-blur {
-  display: flex;
-  margin-bottom: 150px;
-  align-items: flex-start;
-}
-
-/* Обёртка для изображения с блюром */
-.art-image-wrapper {
-  position: relative;
-  overflow: hidden;
-  width: 400px;
-  height: auto;
-  border-radius: 10px;
-  overflow: hidden;
-  flex-shrink: 0;
 }
 
 .blurred {
-  filter: blur(12px);
+  filter: blur(10px);
+  transition: filter 0.3s ease;
+  cursor: pointer;
+  position: relative;
 }
 
-/* Надпись "18+" */
 .blur-overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  color: #fff;
-  background: rgba(0, 0, 0, 0.5);
-  font-size: 36px;
-  font-weight: bold;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 10px;
-  transition: opacity 1s ease;
-  z-index: 3;
-  cursor: pointer;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 1;
+  color: #8cd2b8;
+  font-size: 2rem;
+  padding: 0.5em 1em;
+  border-radius: 8px;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
 }
 
-.blur-overlay.hidden {
-  opacity: 0;
-  pointer-events: none;
+.art-image-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+
+
+.time-art,
+.trek-art {
+  display: inline-block;
+  padding: 10px 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  font-size: 16px;
+  user-select: none;
 }
 
 .track-button {
@@ -200,225 +155,117 @@ header {
   margin-top: 10px;
 }
 
-.track-button:hover {
-  background: linear-gradient(135deg, rgba(255,255,0,0.5), rgba(0,255,255,0.5));
-  transform: scale(1.05);
-  box-shadow: 0 0 20px #00ffff;
+.time-art {
+  background-color: #444;
+  color: white;
 }
 
-.track-button:active {
-  transform: scale(0.95);
-  box-shadow: 0 0 5px #ff00ff;
-}
 
-.time-art-box {
+
+.trek-art {
+  cursor: pointer;
   display: inline-block;
-  background: rgba(0, 0, 0, 0.6);
-  padding: 15px 20px;
-  border-radius: 8px;
-  margin-bottom: 5px;
-  box-shadow: 0 0 5px #0088ff;
+  transition: transform 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
 }
 
 
-.main-columns {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding: 20px;
-  gap: 40px;
-}
 
-#arts {
-  flex: 3;
-}
-
-#memes {
-  flex: 1;
-}
-
-.meme-list {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-#gallery {
+footer {
+  background-color: #ffcccb;
   text-align: center;
-  display: none;
-
+  padding: 1em;
+  font-size: 0.9em;
+  color: #333;
+  margin-top: 2em;
 }
 
-.slider {
-  display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
+/* 👇 Адаптация под телефон + карусель для мемов */
 
-}
-
-.slider img {
-  width: 150px;
-  height: auto;
-  scroll-snap-align: center;
-  border-radius: 10px;
-
-}
 
 @media (max-width: 768px) {
-  #memes {
-    display: none !important;
-  }
-
-  #gallery {
-    display: block;
-  }
-
-  .art-item, .art-item-blur {
+  .main-columns {
     flex-direction: column;
-    align-items: center;
-    margin-bottom: 50px;
   }
 
-  .art-image,
-  .art-image-wrapper,
-  .art-item-blur  {
-    width: 90%;
-    max-width: 300px;
-    margin: 0 auto 15px;
-    border-radius: 10px;
-    overflow: hidden;
-    position: relative;
+  #memes {
+    order: 2;
+    margin-top: 2vh;
   }
-.art-wrapper {
+  
+  .memes-carousel {
   display: flex;
   overflow-x: auto;
-  gap: 20px;
-  padding: 10px;
+  overflow-y: hidden;
+  gap: 1em;
   scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch; /* для плавного скролла на iOS */
+  padding: 1em;
 }
-  .art-image,
-  .art-item-blur .art-image {
-    width: 100%;
-    height: auto;
-    display: block;
-    border-radius: 10px;
-  }
 
-  .art-item-blur .blur-overlay {
-    position: absolute;
-    top: -15px;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+.meme-card {
+  min-width: 80%;
+  scroll-snap-align: start;
+  flex-shrink: 0;
+  background: white;
+  color: black;
+  border-radius: 10px;
+  padding: 1em;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+
+}
+@media (max-width: 768px) {
+  .art-meta {
+    padding-left: 0 !important;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    color: white;
-    font-size: 28px;
-    border-radius: 10px;
-    box-sizing: border-box;
-    pointer-events: auto;
-    z-index: 5;
+    text-align: center;
+  }
+}
+media (min-width: 769px) {
+  .art-item-blur, .art-item {
+    display: flex;
+    gap: 20px;
+    align-items: center;
   }
 
   .art-meta {
-    font-size: 16px;
-    text-align: center;
-    padding: 0 10px;
-    margin-top: 10px;
-  }
-
-  .track-button {
-    font-size: 15px;
-    padding: 10px 15px;
-    margin: 10px auto 0;
-    width: fit-content;
-  }
-
-  .time-art-box {
-    font-size: 14px;
-    padding: 10px;
-    margin-bottom: 8px;
-  }
-
-  .main-columns {
+    display: flex;
     flex-direction: column;
-    gap: 0;
-    padding: 10px;
+    align-items: flex-start;
+    justify-content: center;
   }
 }
 
+
+
+
 </style>
-
-<script>
-  function toggleAudio(id) {
-    const allAudio = document.querySelectorAll("audio");
-    const currentAudio = document.getElementById(id);
-
-    allAudio.forEach(audio => {
-      if (audio !== currentAudio) {
-        audio.pause();
-        audio.currentTime = 0;
-      }
-    });
-
-    if (currentAudio.paused) {
-      currentAudio.play();
-    } else {
-      currentAudio.pause();
-      currentAudio.currentTime = 0;
-    }
-  }
-</script>
-
-<script>
-
-  // Для блюра
-  function setupBlurToggle(imageId, overlayId, timeout = 300000) {
-    const image = document.getElementById(imageId);
-    const overlay = document.getElementById(overlayId);
-
-    function removeBlur() {
-      image.classList.remove('blurred');
-      overlay.classList.add('hidden');
-
-      // Вернуть обратно через timeout (по умолчанию 5 минут)
-      setTimeout(() => {
-        image.classList.add('blurred');
-        overlay.classList.remove('hidden');
-      }, timeout);
-    }
-
-    overlay.addEventListener('click', removeBlur);
-    image.addEventListener('click', removeBlur); // чтобы можно было кликнуть и по изображению
-  }
-
-  // Вызов после загрузки
-  window.addEventListener('DOMContentLoaded', () => {
-    setupBlurToggle('artImage1', 'blurOverlay1');
-    setupBlurToggle('artImage2', 'blurOverlay2');
-    setupBlurToggle('artImage3', 'blurOverlay3');
-    setupBlurToggle('artImage4', 'blurOverlay4');
-  });
-</script>
-
 </head>
 <body>
   <header>
     <div class="title">Xiolty</div>
-    <img style="width: 80px; padding-right: 50px;" src="image_2025-05-21_10-46-47.png" alt="">
+    <img style="width: 80px;" class="tgk" src="image_2025-05-21_10-46-47.png" alt="">
   </header>  
+    </section>
+  </div>
   <div class="main-columns">
+    <div id="arts">
+    <!-- art-card здесь -->
+    <div class="section-title">Арты</div>
     <section class="section" id="arts">
-      <div class="section-title">Арты</div>
+
+      
+     
 
       <div class="art-item-blur">
-        <div class="art-image-wrapper">
+        <div class="art-image-wrapper" onclick="toggleBlur('artImage1', 'blurOverlay1')">
           <img src="photo_2025-04-02_09-51-41.jpg" alt="Арт" class="art-image blurred" id="artImage1">
           <div class="blur-overlay" id="blurOverlay1">18+</div>
         </div>
-        <div class="art-meta" style="padding-left: 20px;">
+        <div class="art-meta">
           <div class="">
             <div class="time-art time-art-box">Time: 5:33</div>
           </div>
@@ -430,11 +277,11 @@ header {
       </div>
 
       <div class="art-item-blur">
-        <div class="art-image-container art-image-wrapper">
+        <div class="art-image-wrapper" onclick="toggleBlur('artImage2', 'blurOverlay2')">
           <img src="photo_2025-05-14_10-51-15.jpg" alt="Арт" class="art-image blurred" id="artImage2">
           <div class="blur-overlay" id="blurOverlay2">18+</div>
         </div>
-        <div class="art-meta" style="padding-left: 20px;">
+        <div class="art-meta" >
           <div class="time-art time-art-box">Time: 1:28</div>
           <div class="track-button">
             <div class="trek-art" onclick="toggleAudio('audio2')">Суспензия - Прости меня</div>
@@ -471,7 +318,7 @@ header {
       </div>
 
       <div class="art-item-blur">
-        <div class="art-image-container art-image-wrapper">
+        <div class="art-image-wrapper" onclick="toggleBlur('artImage3', 'blurOverlay3')">
           <img src="photo_2025-04-09_01-46-14.jpg" alt="Арт" class="art-image blurred" id="artImage3">
           <div class="blur-overlay" id="blurOverlay3">18+</div>
         </div>
@@ -485,7 +332,7 @@ header {
       </div>
 
       <div class="art-item-blur">
-        <div class="art-image-container art-image-wrapper">
+        <div class="art-image-wrapper" onclick="toggleBlur('artImage4', 'blurOverlay4')">
           <img src="photo_2025-05-19_10-53-08.jpg" alt="Арт" class="art-image blurred" id="artImage4">
           <div class="blur-overlay" id="blurOverlay4">18+</div>
         </div>
@@ -572,13 +419,14 @@ header {
           <div class="track-button">
             <div class="trek-art" onclick="toggleAudio('audio12')">Dj trippie flameboy - B0lit :(</div>
             <audio id="audio12" src="dj-tr3pp32-fl1m2b46-b0l3t.mp3"></audio>
-         </div>
         </div>
       </div>
-
-      <div class="art-item">
+    </div>
+    
+    
+    <div class="art-item">
         <div class="art-image-container">
-          <img src="photo_2025-05-29_15-28-01.jpg" alt="Арт" class="art-image">
+          <img src="IMG_20250603_065601_674.jpg" alt="Арт" class="art-image">
         </div>
         <div class="art-meta">
           <div class="time-art time-art-box">Time: ?:??</div>
@@ -591,7 +439,7 @@ header {
 
       <div class="art-item">
         <div class="art-image-container">
-          <img src="photo_2025-05-29_18-52-27.jpg" alt="Арт" class="art-image">
+          <img src="IMG_20250603_064045_997.jpg" alt="Арт" class="art-image">
         </div>
         <div class="art-meta">
           <div class="time-art time-art-box">Time: ?:??</div>
@@ -600,142 +448,41 @@ header {
             <audio id="audio14" src="VanBog - Пятка.mp3"></audio>
           </div>
         </div>
-      </div>
+      </div>       
     </section>  
+  </div>
+</div>
+<script>
+  function toggleBlur(imageId, overlayId) {
+    const image = document.getElementById(imageId);
+    const overlay = document.getElementById(overlayId);
 
+    // Убираем блюр и надпись
+    image.classList.remove('blurred');
+    overlay.style.opacity = 0;
 
-    <section class="section" id="memes">
-      <div class="section-title">Мемы</div>
+    // Возвращаем блюр и надпись через 10 секунд
+    setTimeout(() => {
+      image.classList.add('blurred');
+      overlay.style.opacity = 1;
+    }, 3000000);
+  }
 
-      <div class="meme-item">
-        <img src="photo_10_2025-05-19_11-46-13.jpg" alt="Мем" class="meme-image">
-      </div>
+  function toggleAudio(id) {
+    const audio = document.getElementById(id);
+    if (!audio) return;
 
-      <div class="meme-item">
-        <img src="photo_11_2025-05-19_11-46-13.jpg" alt="Мем" class="meme-image">
-      </div>
+    if (audio.paused) {
+      // Остановим все другие аудио
+      document.querySelectorAll('audio').forEach(a => {
+        if (a !== audio) a.pause();
+      });
+      audio.play();
+    } else {
+      audio.pause();
+    }
+  }
+</script>
 
-
-      <div class="meme-item">
-        <img src="photo_12_2025-05-19_11-46-13.jpg" alt="Мем" class="meme-image">
-      </div>
-
-      <div class="meme-item">
-        <img src="photo_13_2025-05-19_11-46-13.jpg" alt="Мем" class="meme-image">
-      </div>
-
-      <div class="meme-item">
-        <img src="photo_14_2025-05-19_11-46-13.jpg" alt="Мем" class="meme-image">
-      </div>
-
-      <div class="meme-item">
-        <img src="photo_15_2025-05-19_11-46-13.jpg" alt="Мем" class="meme-image">
-      </div>
-
-      <div class="meme-item">
-        <img src="photo_1_2025-05-19_11-46-13.jpg" alt="Мем" class="meme-image">
-      </div>
-
-      <div class="meme-item">
-        <img src="photo_2_2025-05-19_11-46-13.jpg" alt="Мем" class="meme-image">
-      </div>
-
-      <div class="meme-item">
-        <img src="photo_3_2025-05-19_11-46-13.jpg" alt="Мем" class="meme-image">
-      </div>
-
-      <div class="meme-item">
-        <img src="photo_4_2025-05-19_11-46-13.jpg" alt="Мем" class="meme-image">
-      </div>
-
-      <div class="meme-item">
-        <img src="photo_5_2025-05-19_11-46-13.jpg" alt="Мем" class="meme-image">
-      </div>
-
-      <div class="meme-item">
-        <img src="photo_6_2025-05-19_11-46-13.jpg" alt="Мем" class="meme-image">
-      </div>
-
-      <div class="meme-item">
-        <img src="photo_7_2025-05-19_11-46-13.jpg" alt="Мем" class="meme-image">
-      </div>
-
-      <div class="meme-item">
-        <img src="photo_8_2025-05-19_11-46-13.jpg" alt="Мем" class="meme-image">
-      </div>
-
-      <div class="meme-item">
-        <img src="photo_9_2025-05-19_11-46-13.jpg" alt="Мем" class="meme-image">
-      </div>
-    </section>
-        
-
-    <section id="gallery">
-      <div class="section-title">Мемы</div>
-      <div class="slider">
-
-        <div class="meme-item">
-          <img src="photo_10_2025-05-19_11-46-13.jpg" alt="Мем" class="meme-image">
-        </div>
-
-        <div class="meme-item">
-          <img src="photo_11_2025-05-19_11-46-13.jpg" alt="Мем" class="meme-image">
-        </div>
-
-
-        <div class="meme-item">
-          <img src="photo_12_2025-05-19_11-46-13.jpg" alt="Мем" class="meme-image">
-        </div>
-
-        <div class="meme-item">
-          <img src="photo_13_2025-05-19_11-46-13.jpg" alt="Мем" class="meme-image">
-        </div>
-
-        <div class="meme-item">
-          <img src="photo_14_2025-05-19_11-46-13.jpg" alt="Мем" class="meme-image">
-        </div>
-
-        <div class="meme-item">
-          <img src="photo_15_2025-05-19_11-46-13.jpg" alt="Мем" class="meme-image">
-        </div>
-
-        <div class="meme-item">
-          <img src="photo_1_2025-05-19_11-46-13.jpg" alt="Мем" class="meme-image">
-        </div>
-
-        <div class="meme-item">
-          <img src="photo_2_2025-05-19_11-46-13.jpg" alt="Мем" class="meme-image">
-        </div>
-
-        <div class="meme-item">
-          <img src="photo_3_2025-05-19_11-46-13.jpg" alt="Мем" class="meme-image">
-        </div>
-
-        <div class="meme-item">
-          <img src="photo_4_2025-05-19_11-46-13.jpg" alt="Мем" class="meme-image">
-        </div>
-
-        <div class="meme-item">
-          <img src="photo_5_2025-05-19_11-46-13.jpg" alt="Мем" class="meme-image">
-        </div>
-
-        <div class="meme-item">
-          <img src="photo_6_2025-05-19_11-46-13.jpg" alt="Мем" class="meme-image">
-        </div>
-
-        <div class="meme-item">
-          <img src="photo_7_2025-05-19_11-46-13.jpg" alt="Мем" class="meme-image">
-        </div>
-
-        <div class="meme-item">
-          <img src="photo_8_2025-05-19_11-46-13.jpg" alt="Мем" class="meme-image">
-        </div>
-
-        <div class="meme-item">
-          <img src="photo_9_2025-05-19_11-46-13.jpg" alt="Мем" class="meme-image">
-        </div>
-
-      </div>
-  </section>
 </body>
 </html>
