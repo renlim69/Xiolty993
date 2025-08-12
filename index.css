@@ -1,0 +1,295 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-x: hidden;
+  font-family: "Rubik Glitch", system-ui;
+  background-image: url('photo_2025-05-13_11-37-47.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: #fff;
+  filter: contrast(130%) brightness(110%);
+  animation: hueRotate 20s infinite linear;
+  position: relative;
+  z-index: 0;
+  color: #ffffff;
+}
+
+.background-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, rgba(255,0,255,0.3), rgba(0,255,255,0.3), rgba(255,255,0,0.3));
+  mix-blend-mode: screen;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/*
+@keyframes glitch {
+  0% { text-shadow: 2px 0 #ff00ff, -2px 0 #00ffff; }
+  20% { text-shadow: -2px 0 #ffff00, 2px 0 #ff0090; }
+  40% { text-shadow: 2px 2px #00ffff, -2px -2px #ff00ff; }
+  60% { text-shadow: -2px -2px #ff0090, 2px 2px #00ff00; }
+  80% { text-shadow: 2px -2px #ff0000, -2px 2px #00ffff; }
+  100% { text-shadow: 0 0 #ff00ff, 0 0 #00ffff; }
+} 
+
+* {
+  animation: glitch 1.5s infinite alternate;
+}
+*/
+.art-item {
+  display: flex;
+  margin-bottom: 150px;
+}
+
+header {
+  width: 100%;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px dashed #ff00ff;
+  position: relative;
+  z-index: 1;
+}
+
+.title {
+  font-size: 42px;
+  text-shadow: 2px 2px 4px #ff00ff;
+  padding-left: 20px;
+}
+
+.section {
+  padding: 20px;
+  margin: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.section-title {
+  font-size: 32px;
+  margin-bottom: 16px;
+  text-shadow: 1px 1px 4px #000;
+  border-bottom: 2px dotted #ff00ff;
+}
+
+.art-image {
+  width: 400px;
+  height: auto;
+  border-radius: 10px;
+  margin-right: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.art-meta {
+  font-size: 22px;
+  color: #0088ff;
+  text-shadow: 0 0 3px #000;
+  z-index: 2;
+}
+
+.trek-art {
+  cursor: pointer;
+  display: inline-block;
+  transition: transform 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.trek-art:hover {
+  color: #ff00ff;
+  text-shadow: 0 0 10px #00ffff, 0 0 20px #ff00ff;
+  transform: scale(1.05) rotate(-1deg);
+}
+
+.trek-art:active {
+  transform: scale(0.95) rotate(1deg);
+  color: #ffff00;
+}
+
+.time-art {
+  margin-bottom: 20px;
+}
+
+
+/* Общие стили для всех артов */
+.art-item-blur {
+  display: flex;
+  margin-bottom: 150px;
+  align-items: flex-start;
+}
+
+/* Обёртка для изображения с блюром */
+.art-image-wrapper {
+  position: relative;
+  overflow: hidden;
+  width: 400px;
+  height: auto;
+  border-radius: 10px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.blurred {
+  filter: blur(12px);
+}
+
+/* Надпись "18+" */
+.blur-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.5);
+  font-size: 36px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  transition: opacity 1s ease;
+  z-index: 3;
+  cursor: pointer;
+}
+
+.blur-overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.track-button {
+  background: linear-gradient(135deg, rgba(255,0,255,0.6), rgba(0,255,255,0.6));
+  padding: 15px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 0 10px #ff00ff;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.track-button:hover {
+  background: linear-gradient(135deg, rgba(255,255,0,0.5), rgba(0,255,255,0.5));
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #00ffff;
+}
+
+.track-button:active {
+  transform: scale(0.95);
+  box-shadow: 0 0 5px #ff00ff;
+}
+
+.time-art-box {
+  display: inline-block;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 15px 20px;
+  border-radius: 8px;
+  margin-bottom: 5px;
+  box-shadow: 0 0 5px #0088ff;
+}
+
+
+.main-columns {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px;
+  gap: 40px;
+}
+
+#arts {
+  flex: 3;
+}
+
+@media (max-width: 768px) {
+
+  .title {
+    font-size: 38px;  
+  }
+
+  .section-title {
+    font-size: 28px;
+  }
+
+
+  .art-item, .art-item-blur {
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 50px;
+  }
+
+  .art-image,
+  .art-image-wrapper,
+  .art-item-blur  {
+    width: 90%;
+    max-width: 300px;
+    margin: 0 auto 15px;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+  }
+  .art-wrapper {
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    padding: 10px;
+    scroll-snap-type: x mandatory;
+  }
+  .art-image,
+  .art-item-blur .art-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 10px;
+  }
+
+  .art-item-blur .blur-overlay {
+    position: absolute;
+    top: -15px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 28px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    pointer-events: auto;
+    z-index: 5;
+  }
+
+  .art-meta {
+    font-size: 16px;
+    text-align: center;
+    padding: 0 10px;
+    margin-top: 10px;
+  }
+
+  .track-button {
+    font-size: 15px;
+    padding: 10px 15px;
+    margin: 10px auto 0;
+    width: fit-content;
+  }
+
+  .time-art-box {
+    font-size: 14px;
+    padding: 10px;
+    margin-bottom: 8px;
+  }
+
+  .main-columns {
+    flex-direction: column;
+    gap: 0;
+    padding: 10px;
+  }
+}

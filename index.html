@@ -3,269 +3,82 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Xiolty</title>
+  <link rel="stylesheet" href="index.css">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Rubik+Glitch&display=swap" rel="stylesheet">
 
-  <style>
-
-
-body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  overflow-x: hidden;
-  font-family: "Rubik Glitch", system-ui;
-  background-image: url('photo_2025-05-13_11-37-47.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  color: #fff;
-  filter: contrast(130%) brightness(110%);
-}
-
-header {
-  width: 100%;
-  box-sizing: border-box;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   
-  background-color: rgba(0, 0, 0, 0.6);
-  border-bottom: 2px dashed #ff00ff;
-}
 
-.title {
-  padding-left: 20px;
-  font-size: clamp(1.5rem, 2rem, 2.5rem);
-  color: #fff;
-  text-shadow: 2px 2px 4px #ff00ff;
-}
+<script>
+  function toggleAudio(id) {
+    const allAudio = document.querySelectorAll("audio");
+    const currentAudio = document.getElementById(id);
 
-.tgk {
-  padding-right: 20px;
-}
+    allAudio.forEach(audio => {
+      if (audio !== currentAudio) {
+        audio.pause();
+        audio.currentTime = 0;
+      }
+    });
 
-.main-columns {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  padding: 2vw;
-  gap: 2vw;
-}
+    if (currentAudio.paused) {
+      currentAudio.play();
+    } else {
+      currentAudio.pause();
+      currentAudio.currentTime = 0;
+    }
+  }
+</script>
 
-.section-title {
-  font-size: 1.75rem; 
-  margin-bottom: 1rem;
-  text-align: center;
-  text-shadow: 0.063em 0.063em 0.25em #000; 
-  border-bottom: 0.125rem dotted #ff00ff;
-}
+<script>
 
-#arts{
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  padding: 2vh 2vw;
-  flex: 1 1 100%;
-}
+  // Для блюра
+  function setupBlurToggle(imageId, overlayId, timeout = 300000) {
+    const image = document.getElementById(imageId);
+    const overlay = document.getElementById(overlayId);
 
-#memes .memes-carousel {
-  margin-top: 5rem
-}
-@media (min-width: 769px) {
-  #arts {
-    flex: 3;
+    function removeBlur() {
+      image.classList.remove('blurred');
+      overlay.classList.add('hidden');
+
+      // Вернуть обратно через timeout (по умолчанию 5 минут)
+      setTimeout(() => {
+        image.classList.add('blurred');
+        overlay.classList.remove('hidden');
+      }, timeout);
+    }
+
+    overlay.addEventListener('click', removeBlur);
+    image.addEventListener('click', removeBlur); // чтобы можно было кликнуть и по изображению
   }
 
-  #memes {
-    flex: 1;
-  }
-}
-@media (max-width: 768px) {
-  .main-columns {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-}
+  // Вызов после загрузки
+  window.addEventListener('DOMContentLoaded', () => {
+    setupBlurToggle('artImage1', 'blurOverlay1');
+    setupBlurToggle('artImage2', 'blurOverlay2');
+    setupBlurToggle('artImage3', 'blurOverlay3');
+    setupBlurToggle('artImage4', 'blurOverlay4');
+  });
+</script>
 
-.art-card {
-  background-color: #ffe4e1;
-  border-radius: 8px;
-  padding: 1em;
-  margin-bottom: 1.5em;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-}
-
-.art-image {
-  border-radius: 8px;
-  margin-top: 1em;
-  width: 100%;
-  max-width: 450px;
-  height: auto;
-}
-
-.blurred {
-  filter: blur(10px);
-  transition: filter 0.3s ease;
-  cursor: pointer;
-  position: relative;
-}
-
-.blur-overlay {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  opacity: 1;
-  color: #8cd2b8;
-  font-size: 2rem;
-  padding: 0.5em 1em;
-  border-radius: 8px;
-  pointer-events: none;
-  transition: opacity 0.5s ease;
-}
-
-.art-image-wrapper {
-  position: relative;
-  display: inline-block;
-}
-
-
-
-.time-art,
-.trek-art {
-  display: inline-block;
-  padding: 10px 15px;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  font-size: 16px;
-  user-select: none;
-}
-
-.track-button {
-  background: linear-gradient(135deg, rgba(255,0,255,0.6), rgba(0,255,255,0.6));
-  padding: 15px 20px;
-  border-radius: 12px;
-  cursor: pointer;
-  box-shadow: 0 0 10px #ff00ff;
-  transition: all 0.3s ease;
-  margin-top: 10px;
-}
-
-.time-art {
-  background-color: #444;
-  color: white;
-}
-
-
-
-.trek-art {
-  cursor: pointer;
-  display: inline-block;
-  transition: transform 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
-}
-
-
-
-footer {
-  background-color: #ffcccb;
-  text-align: center;
-  padding: 1em;
-  font-size: 0.9em;
-  color: #333;
-  margin-top: 2em;
-}
-
-/* 👇 Адаптация под телефон + карусель для мемов */
-
-
-@media (max-width: 768px) {
-  .main-columns {
-    flex-direction: column;
-  }
-
-  #memes {
-    order: 2;
-    margin-top: 2vh;
-  }
-  
-  .memes-carousel {
-  display: flex;
-  overflow-x: auto;
-  overflow-y: hidden;
-  gap: 1em;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch; /* для плавного скролла на iOS */
-  padding: 1em;
-}
-
-.meme-card {
-  min-width: 80%;
-  scroll-snap-align: start;
-  flex-shrink: 0;
-  background: white;
-  color: black;
-  border-radius: 10px;
-  padding: 1em;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-}
-
-
-}
-@media (max-width: 768px) {
-  .art-meta {
-    padding-left: 0 !important;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-}
-media (min-width: 769px) {
-  .art-item-blur, .art-item {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-  }
-
-  .art-meta {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-  }
-}
-
-
-
-
-</style>
 </head>
 <body>
   <header>
     <div class="title">Xiolty</div>
-    <img style="width: 80px;" class="tgk" src="image_2025-05-21_10-46-47.png" alt="">
+    <img style="width: 80px; padding-right: 50px;" src="image_2025-05-21_10-46-47.png" alt="">
   </header>  
-    </section>
-  </div>
   <div class="main-columns">
-    <div id="arts">
-    <!-- art-card здесь -->
-    <div class="section-title">Арты</div>
     <section class="section" id="arts">
-
-      
-     
+      <div class="section-title">Арты</div>
 
       <div class="art-item-blur">
-        <div class="art-image-wrapper" onclick="toggleBlur('artImage1', 'blurOverlay1')">
+        <div class="art-image-wrapper">
           <img src="photo_2025-04-02_09-51-41.jpg" alt="Арт" class="art-image blurred" id="artImage1">
           <div class="blur-overlay" id="blurOverlay1">18+</div>
         </div>
-        <div class="art-meta">
+        <div class="art-meta" style="padding-left: 20px;">
           <div class="">
             <div class="time-art time-art-box">Time: 5:33</div>
           </div>
@@ -277,11 +90,11 @@ media (min-width: 769px) {
       </div>
 
       <div class="art-item-blur">
-        <div class="art-image-wrapper" onclick="toggleBlur('artImage2', 'blurOverlay2')">
+        <div class="art-image-container art-image-wrapper">
           <img src="photo_2025-05-14_10-51-15.jpg" alt="Арт" class="art-image blurred" id="artImage2">
           <div class="blur-overlay" id="blurOverlay2">18+</div>
         </div>
-        <div class="art-meta" >
+        <div class="art-meta" style="padding-left: 20px;">
           <div class="time-art time-art-box">Time: 1:28</div>
           <div class="track-button">
             <div class="trek-art" onclick="toggleAudio('audio2')">Суспензия - Прости меня</div>
@@ -318,7 +131,7 @@ media (min-width: 769px) {
       </div>
 
       <div class="art-item-blur">
-        <div class="art-image-wrapper" onclick="toggleBlur('artImage3', 'blurOverlay3')">
+        <div class="art-image-container art-image-wrapper">
           <img src="photo_2025-04-09_01-46-14.jpg" alt="Арт" class="art-image blurred" id="artImage3">
           <div class="blur-overlay" id="blurOverlay3">18+</div>
         </div>
@@ -332,7 +145,7 @@ media (min-width: 769px) {
       </div>
 
       <div class="art-item-blur">
-        <div class="art-image-wrapper" onclick="toggleBlur('artImage4', 'blurOverlay4')">
+        <div class="art-image-container art-image-wrapper">
           <img src="photo_2025-05-19_10-53-08.jpg" alt="Арт" class="art-image blurred" id="artImage4">
           <div class="blur-overlay" id="blurOverlay4">18+</div>
         </div>
@@ -419,14 +232,13 @@ media (min-width: 769px) {
           <div class="track-button">
             <div class="trek-art" onclick="toggleAudio('audio12')">Dj trippie flameboy - B0lit :(</div>
             <audio id="audio12" src="dj-tr3pp32-fl1m2b46-b0l3t.mp3"></audio>
+         </div>
         </div>
       </div>
-    </div>
-    
-    
-    <div class="art-item">
+
+      <div class="art-item">
         <div class="art-image-container">
-          <img src="IMG_20250603_065601_674.jpg" alt="Арт" class="art-image">
+          <img src="photo_2025-05-29_15-28-01.jpg" alt="Арт" class="art-image">
         </div>
         <div class="art-meta">
           <div class="time-art time-art-box">Time: ?:??</div>
@@ -439,7 +251,7 @@ media (min-width: 769px) {
 
       <div class="art-item">
         <div class="art-image-container">
-          <img src="IMG_20250603_064045_997.jpg" alt="Арт" class="art-image">
+          <img src="photo_2025-05-29_18-52-27.jpg" alt="Арт" class="art-image">
         </div>
         <div class="art-meta">
           <div class="time-art time-art-box">Time: ?:??</div>
@@ -448,41 +260,33 @@ media (min-width: 769px) {
             <audio id="audio14" src="VanBog - Пятка.mp3"></audio>
           </div>
         </div>
-      </div>       
+      </div>
+
+      <div class="art-item">
+        <div class="art-image-container">
+          <img src="photo_2025-06-21_12-07-37.jpg" alt="Арт" class="art-image">
+        </div>
+        <div class="art-meta">
+          <div class="time-art time-art-box">Time: 7:21</div>
+          <div class="track-button">
+            <div class="trek-art" onclick="toggleAudio('audio15')">Mr. Trance - Esteman</div>
+            <audio id="audio15" src="Mr. Trance Esteman.m4a"></audio>
+          </div>
+        </div>
+      </div>
+
+      <div class="art-item">
+        <div class="art-image-container">
+          <img src="photo_2025-07-02_22-51-31.jpg" alt="Арт" class="art-image">
+        </div>
+        <div class="art-meta">
+          <div class="time-art time-art-box">Time: 5:16</div>
+          <div class="track-button">
+            <div class="trek-art" onclick="toggleAudio('audio16')">scizzie - aquatic ambience</div>
+            <audio id="audio16" src="scizzie aquatic ambience.m4a"></audio>
+          </div>
+        </div>
+      </div>
     </section>  
-  </div>
-</div>
-<script>
-  function toggleBlur(imageId, overlayId) {
-    const image = document.getElementById(imageId);
-    const overlay = document.getElementById(overlayId);
-
-    // Убираем блюр и надпись
-    image.classList.remove('blurred');
-    overlay.style.opacity = 0;
-
-    // Возвращаем блюр и надпись через 10 секунд
-    setTimeout(() => {
-      image.classList.add('blurred');
-      overlay.style.opacity = 1;
-    }, 3000000);
-  }
-
-  function toggleAudio(id) {
-    const audio = document.getElementById(id);
-    if (!audio) return;
-
-    if (audio.paused) {
-      // Остановим все другие аудио
-      document.querySelectorAll('audio').forEach(a => {
-        if (a !== audio) a.pause();
-      });
-      audio.play();
-    } else {
-      audio.pause();
-    }
-  }
-</script>
-
 </body>
 </html>
